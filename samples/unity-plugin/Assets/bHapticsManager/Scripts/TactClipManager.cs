@@ -25,9 +25,11 @@ namespace Bhaptics.Tact.Unity
         {
             string extension = "*.tact";
             string[] tactFiles = Directory.GetFiles("Assets/", extension, SearchOption.AllDirectories);
-            for(int i=0; i<tactFiles.Length; ++i)
+            for (int i = 0; i < tactFiles.Length; ++i)
             {
-                EditorUtility.DisplayProgressBar("Hold On", "Converting *.tact -> TactClip (" + i + " / " + tactFiles.Length + ")", i / (float)tactFiles.Length);
+                var fileName = Path.GetFileNameWithoutExtension(tactFiles[i]);
+                EditorUtility.DisplayProgressBar("Hold On", "Converting " + fileName + ".tact -> "
+                                                + fileName + ".asset (" + i + " / " + tactFiles.Length + ")", i / (float)tactFiles.Length);
                 CreateTactClip(tactFiles[i]);
             }
             EditorUtility.ClearProgressBar();

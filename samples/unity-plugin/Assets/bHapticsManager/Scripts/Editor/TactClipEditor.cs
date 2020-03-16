@@ -143,7 +143,7 @@ namespace Bhaptics.Tact.Unity
         private void SaveAsUi()
         {
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Save As Tact File"))
+            if (GUILayout.Button("Save As *.tact File"))
             {
                 SaveAsTactFileFromClip(target);
             }
@@ -161,7 +161,7 @@ namespace Bhaptics.Tact.Unity
             var tactClip = target as TactClip;
             if (tactClip != null)
             {
-                var saveAsPath = EditorUtility.SaveFilePanel("Save as Tact File", @"\download\", tactClip.Name, "tact");
+                var saveAsPath = EditorUtility.SaveFilePanel("Save as *.tact File", @"\download\", tactClip.Name, "tact");
                 if (saveAsPath != "")
                 {
                     File.WriteAllText(saveAsPath, tactClip.JsonValue);
